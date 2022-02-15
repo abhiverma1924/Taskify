@@ -1,0 +1,32 @@
+.input{
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 0 10px;
+    font-size: 16px;
+    color: #555;
+    outline: none;
+}
+.input__form{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+.form__data{
+    width: 10vw;
+    height: 8vh;
+    margin-top: 8px;
+}
+.form__submit{
+    width: 10vw;
+    height: 5vh;
+    margin: 4px 5px;
+    background-color: #8bb5ec;
+    border: none;
+    color: white;
+    border-radius: 2px;
+    font-family: 'Neucha', cursive;
+    font-size: 15px;
+}

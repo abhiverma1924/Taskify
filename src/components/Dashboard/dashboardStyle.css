@@ -1,0 +1,50 @@
+@import url("https://fonts.googleapis.com/css2?family=Neucha&display=swap");
+
+.dashboard__section{
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+
+}
+.dashboard__container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100vw;
+    margin: 0px;
+    background-color: rgb(192, 192, 190);
+}
+
+.dashboard__todo{
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(252, 252, 250);
+    margin: 2vh 2vw;
+    width: 30vw;
+
+}
+
+.todo__title{
+    color: rgb(248, 248, 244);
+    font-size: 22px;
+    padding-left: 2vw;
+    font-family: "Neucha", cursive;
+    background-color: #8bb5ec;
+}
+.dashboard__inprogress{    
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(231, 231, 228);
+    margin: 2vh 2vw;
+}
+.dashboard__done{
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(231, 231, 228);
+    margin: 2vh 2vw;
+}
+
+.filter__section{
+    margin-top: 1vh;
+}

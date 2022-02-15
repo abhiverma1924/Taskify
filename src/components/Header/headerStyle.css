@@ -1,0 +1,17 @@
+@import url("https://fonts.googleapis.com/css2?family=Neucha&display=swap");
+
+.header__section{
+    width: 100%;
+    height: 60px;
+    background-color: #8bb5ec;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    box-shadow: 0 0 5px black;
+    font-size: 3rem;
+    font-family: 'Neucha', cursive;
+    padding-left: 4vw;
+    color: rgb(241, 237, 237);
+    border-bottom: 1px solid white;
+}
