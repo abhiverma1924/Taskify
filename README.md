@@ -1,6 +1,6 @@
-# Project Title
+# Taskify
 
-Taskify
+Managing task was never this easy.
 
 ## Description
 
