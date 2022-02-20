@@ -10,38 +10,22 @@ import { AiFillDelete } from "react-icons/ai";
 import { MdDone } from "react-icons/md";
 import { GrInProgress } from "react-icons/gr";
 import { DragDropContext, Draggable, Droppable, DropResult } from "react-beautiful-dnd";
+import HandleCount from "./handleCount";
 
 const Dashboard: React.FC = () => {
   const [todoList, setTodoList] = useState<Array<Todo>>([]);
-  const[todoCount,setTodoCount] = useState<number>(0);
-  const[inProgressCount,setInProgressCount] = useState<number>(0);
-  const[isDoneCount,setIsDoneCount] = useState<number>(0);
-
-
+  const [filterList, setFilterList] = useState<Array<Todo>>([]);
+  const[isFilterFlag,setIsFilterFlag] = useState<boolean>(false);
   
   const handleAdd = (singleTodo: Todo) => {
     setTodoList([...todoList, singleTodo]);
-    handleCount();
   };
+  const [todoCount, inProgressCount, inDoneCount] = HandleCount(todoList);
 
-  const handleCount = () => {
-    todoList.map(todo=>{
-      if(todo.isDone && todo.inProgress){
-        setIsDoneCount(isDoneCount+1);
-      }
-      else if(!todo.isDone && !todo.inProgress){
-        setTodoCount(todoCount+1);
-      }
-      else{
-        setInProgressCount(inProgressCount+1);
-      }
-    })
-  }
   //Function To Delete Task
   const handleDelete = (id: number) => {
     const temp = todoList[id];
     setTodoList(todoList.filter((t) => t.id !== id));
-    handleCount();
   };
   // Function to Mark Task inProgress 
   const handleInProgress = (id: number) => {
@@ -50,7 +34,6 @@ const Dashboard: React.FC = () => {
         todo.id === id ? { ...todo, inProgress: true, isDone: false } : todo
       )
     );
-    handleCount();
   };
   // Function to Mark Task isDone
   const handleDone = (id: number) => {
@@ -59,7 +42,6 @@ const Dashboard: React.FC = () => {
         todo.id === id ? { ...todo, isDone: true, inProgress: false } : todo
       )
     );
-    handleCount();
   };
 
   // Function to Drag and Drop Tasks and Reorder Task 
@@ -106,11 +88,7 @@ const Dashboard: React.FC = () => {
         )
       );
     }
-    handleCount();
   };
-  const handleFilter = () =>{
-
-  }
 
   
   return (
@@ -127,10 +105,10 @@ const Dashboard: React.FC = () => {
               handleAdd={handleAdd}
             />
           </div>
+          
           <div className="dashboard__container">
             <section className="dashboard__todo">
-              <h1 className="todo__title">Todo </h1>
-
+              <h1 className="todo__title">Todo {todoCount} </h1>
               <div className="todo_conatiner">
                 <Droppable droppableId="todo__list">
                   {(provided) => (
@@ -138,7 +116,7 @@ const Dashboard: React.FC = () => {
                       <List
                         className="demo-loadmore-list"
                         itemLayout="horizontal"
-                        dataSource={todoList}
+                        dataSource={(!isFilterFlag)?todoList:filterList}
                         size="large"
                         renderItem={(todo, index) =>
                           !todo.isDone &&
@@ -197,7 +175,7 @@ const Dashboard: React.FC = () => {
               </div>
             </section>
             <section className="dashboard__todo">
-              <h1 className="todo__title">In Progress </h1>
+              <h1 className="todo__title">In Progress {inProgressCount}</h1>
               <div className="todo_conatiner">
                 <Droppable droppableId="todo__progress">
                   {(provided) => (
@@ -264,7 +242,7 @@ const Dashboard: React.FC = () => {
               </div>
             </section>
             <section className="dashboard__todo">
-              <h1 className="todo__title">Done </h1>
+              <h1 className="todo__title">Done {inDoneCount}</h1>
               <div className="todo_conatiner">
                 <Droppable droppableId="todo__done">
                   {(provided) => (
